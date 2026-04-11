@@ -7,15 +7,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CommentService {
-  private apiUrl = 'http://localhost:3030/data/comments';
+  private apiUrl = 'http://localhost:3030';
+  private options = { withCredentials: true };
 
   constructor(private http: HttpClient) {}
 
-  getCommentsByRecipeId(recipeId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl}?where=recipeId%3D%22${recipeId}%22`);
+  getLatestComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl}/comments`);
   }
 
-  addComment(text: string, recipeId: string) {
-    return this.http.post<Comment>(this.apiUrl, { text, recipeId });
+  createComment(recipeId: string, text: string): Observable<Comment> {
+    return this.http.post<Comment>(`${this.apiUrl}/recipes/${recipeId}`, { text }, this.options);
+  }
+
+  deleteComment(recipeId: string, commentId: string): Observable<any> {
+    return this.http.delete(
+      `${this.apiUrl}/recipes/${recipeId}/comments/${commentId}`,
+      this.options,
+    );
   }
 }

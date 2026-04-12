@@ -5,8 +5,9 @@ export interface Recipe {
   ingredients: string[];
   instructions: string[];
   imageUrl: string;
-  userId: string;
-  comments: string[];
+  userId: string | { _id: string; username: string };
+  comments: string[] | Comment[];
   favorites: string[];
   created_at: string;
+  updatedAt: string;
 }

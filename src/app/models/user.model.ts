@@ -6,5 +6,4 @@ export interface User {
   comments: string[];
   favorites: string[];
   created_at: string;
-  accessToken?: string;
 }

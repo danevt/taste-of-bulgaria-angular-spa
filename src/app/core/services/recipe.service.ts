@@ -16,6 +16,14 @@ export class RecipeService {
     return this.http.get<Recipe[]>(RECIPES_BASE);
   }
 
+  getLatestRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${RECIPES_BASE}/latest`);
+  }
+
+  getRecipesByCategory(category: string): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(`${RECIPES_BASE}/category?category=${category}`);
+  }
+
   getRecipeById(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${RECIPES_BASE}/${id}`);
   }

@@ -3,5 +3,6 @@ export interface Comment {
   text: string;
   userId: string | { _id: string; username: string; email: string };
   recipeId: string;
+  likes: string[];
   created_at: string;
 }

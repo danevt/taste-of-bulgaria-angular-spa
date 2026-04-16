@@ -8,6 +8,6 @@ export interface Recipe {
   userId: string | { _id: string; username: string };
   comments: string[] | Comment[];
   favorites: string[];
-  created_at: string;
+  createdAt: string;
   updatedAt: string;
 }

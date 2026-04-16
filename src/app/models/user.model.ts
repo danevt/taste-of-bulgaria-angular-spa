@@ -5,5 +5,5 @@ export interface User {
   recipes: string[];
   comments: string[];
   favorites: string[];
-  created_at: string;
+  createdAt: string;
 }

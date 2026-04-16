@@ -4,5 +4,5 @@ export interface Comment {
   userId: string | { _id: string; username: string; email: string };
   recipeId: string;
   likes: string[];
-  created_at: string;
+  createdAt: string;
 }

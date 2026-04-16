@@ -37,7 +37,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles/styles.css"]
+            "styles": ["src/styles/styles.css", "src/assets/css/fontawesome-all.min.css"]
           },
           "configurations": {
             "production": {
@@ -90,7 +90,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles/styles.css"]
+            "styles": ["src/styles/styles.css", "src/assets/css/fontawesome-all.min.css"]
           }
         }
       }

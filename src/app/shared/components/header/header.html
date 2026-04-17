@@ -1,1 +1,30 @@
-<p>header works!</p>
+<!-- src/app/shared/components/header/header.html -->
+<div id="header-wrapper" [class.sticky]="isSticky">
+  <div class="container">
+    <header id="header">
+      <div class="inner">
+        <h1>
+          <a routerLink="/" id="logo">
+            <img src="/assets/images/logo-img.ico" alt="logo" class="logo-icon" />
+            <span class="text-white">Taste </span>
+            <span class="text-green">of </span>
+            <span class="text-red">Bulgaria</span>
+          </a>
+        </h1>
+
+        <nav id="nav">
+          <ul>
+            <li><a routerLink="/recipes">Catalog</a></li>
+            @if (isLoggedIn()) {
+              <li><a routerLink="/profile">Profile</a></li>
+              <li><a (click)="logout()" style="cursor: pointer">Logout</a></li>
+            } @else {
+              <li><a routerLink="/login">Login</a></li>
+              <li><a routerLink="/register">Register</a></li>
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </div>
+</div>

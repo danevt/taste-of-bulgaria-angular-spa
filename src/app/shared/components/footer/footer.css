@@ -1,0 +1,47 @@
+/* src/app/shared/components/footer/footer.css */
+#footer-wrapper {
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('/assets/images/bg03.png'),
+    url('/assets/images/bg02.png');
+  position: relative;
+  background-repeat: repeat-x, no-repeat, repeat;
+  background-size: 100% 100%, 100% 15em, auto auto;
+  background-position: top left, top center, top left;
+  padding: 2em 0;
+}
+
+#footer {
+  margin-bottom: 0;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+#footer h2 {
+  font-size: 1.35em;
+  color: #fff;
+}
+
+#footer strong {
+  color: #fff;
+}
+
+#footer a {
+  color: #acb2bf;
+}
+
+#footer ul.divided li,
+#footer ul.menu li {
+  border-color: rgba(255, 255, 255, 0.075);
+}
+
+#footer ul.menu {
+  margin: 0;
+}
+
+#footer .row {
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-size: 0.9em;
+  color: #aaa;
+  padding-top: 3.5em;
+}

@@ -1,0 +1,114 @@
+#banner {
+    text-align: center;
+    width: 940px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 9em 0 6em 0;
+}
+
+#banner h2 {
+    border: solid 1px rgba(255, 255, 255, 0.25);
+    border-left: 0;
+    border-right: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 2.35em;
+    font-weight: 700;
+    line-height: 1.3em;
+    margin: 0 0 1.5em 0;
+}
+
+#banner h2 strong {
+    font-weight: 800;
+    color: inherit;
+}
+
+#banner h2:before {
+    content: '';
+    display: block;
+    border-top: solid 1px rgba(255, 255, 255, 0.25);
+    margin: 10px 0 1.25em 0;
+}
+
+#banner h2:after {
+    content: '';
+    display: block;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.25);
+    margin: 1.25em 0 10px 0;
+}
+
+#main-wrapper {
+    background: #fff;
+}
+
+.box.excerpt {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5em;
+}
+
+.box.excerpt header {
+    margin: 0 0 1em 0;
+}
+
+.box.excerpt p {
+    margin-bottom: 0;
+}
+
+.box.excerpt .image.left {
+    flex: 0 0 360px;
+    width: 360px;
+    height: 240px;
+    margin: 0;
+    float: none;
+    overflow: visible;
+    border-radius: 8px;
+}
+
+.box.excerpt .image.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.box.excerpt .content {
+    flex: 1;
+}
+
+.box.article-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.box.article-list article {
+    border-bottom: solid 1px #dbdbdb;
+    margin: 0 0 2.75em 0;
+    padding: 0 0 2.75em 0;
+}
+
+.box.article-list article:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.box.feature1 {
+    text-align: center;
+}
+
+.box.feature1 header {
+    margin-bottom: 3em;
+}
+
+.box.feature1 header.major h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.5px #aaa;
+}
+
+.hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.2em !important;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8) !important;
+}

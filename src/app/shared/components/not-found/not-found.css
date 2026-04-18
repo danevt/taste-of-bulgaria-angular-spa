@@ -1,0 +1,27 @@
+.not-found-content {
+    text-align: center;
+    padding: 5em 2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: 8em;
+    font-weight: 800;
+    color: #d62612;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.not-found-content h2 {
+    font-size: 2em;
+    margin: 0.5em 0;
+    color: #404248;
+}
+
+.not-found-content p {
+    color: #7b818c;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+}

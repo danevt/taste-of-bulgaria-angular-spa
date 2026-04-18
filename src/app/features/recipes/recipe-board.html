@@ -1,1 +1,39 @@
-<p>recipe-board works!</p>
+<div class="wrapper style1">
+  <div id="banner">
+    <h2>
+      <strong>Full Recipe Treasury: A Journey Through Flavors</strong>
+    </h2>
+    <p class="inspiring-text">
+      Explore our complete collection of authentic dishes and hidden culinary gems.<br />
+      From the heart of the mountains to the seaside, find your next favorite tradition.
+    </p>
+  </div>
+  <div class="inner">
+    <div class="container">
+      <header class="major">
+        <h2>{{ currentCategory || 'All Recipes' }}</h2>
+        <p>Browse traditional Bulgarian recipes</p>
+      </header>
+
+      <div class="row">
+        @for (recipe of recipes; track recipe._id) {
+          <div class="col-4 col-12-medium">
+            <section class="recipe-card">
+              <a [routerLink]="['/recipes', recipe._id]" class="image featured">
+                <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+              </a>
+              <h3>
+                <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+              </h3>
+              <span class="category-badge">{{ recipe.category }}</span>
+            </section>
+          </div>
+        } @empty {
+          <div class="col-12">
+            <p>No recipes found.</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

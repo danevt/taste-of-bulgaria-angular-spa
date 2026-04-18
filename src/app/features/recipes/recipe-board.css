@@ -1,0 +1,66 @@
+.recipe-card {
+    margin-bottom: 2em;
+}
+
+.recipe-card h3 {
+    text-align: center;
+    margin: 1em 0 0.5em;
+}
+
+.recipe-card h3 a {
+    color: #404248;
+    text-decoration: none;
+}
+
+.recipe-card h3 a:hover {
+    color: #4091bf;
+}
+
+.category-badge {
+    display: block;
+    text-align: center;
+    font-size: 0.85em;
+    color: #696969;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+#banner {
+    width: 100%;
+    min-height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 6em 1em;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+        url('/assets/images/recipe-board.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#banner h2 {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+#banner h2 strong {
+    font-weight: 800;
+    color: #fff;
+}
+
+Д #banner .inspiring-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2em;
+    line-height: 1.6em;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}

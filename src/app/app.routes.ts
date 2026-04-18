@@ -23,6 +23,10 @@ export const routes: Routes = [
     canActivate: [guestGuard],
   },
   {
+    path: 'recipes',
+    loadComponent: () => import('./features/recipes/recipe-board').then((c) => c.RecipeBoard),
+  },
+  {
     path: '**',
     component: NotFound,
   },

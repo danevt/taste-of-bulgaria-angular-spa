@@ -1,1 +1,87 @@
-<p>new-recipe works!</p>
+<div class="wrapper style1">
+  <div class="inner">
+    <div class="container">
+      <div class="form-container">
+        <h2>{{ isEditMode ? 'Edit Recipe' : 'Add New Recipe' }}</h2>
+
+        <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
+          <div class="form-group">
+            <label for="name">Recipe Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="formData.name"
+              required
+              #nameField="ngModel"
+            />
+            @if (nameField.touched && nameField.invalid) {
+              <span class="error">Recipe name is required</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" [(ngModel)]="formData.category" required>
+              <option value="Main Dishes">Main Dishes</option>
+              <option value="Salads & Appetizers">Salads & Appetizers</option>
+              <option value="Desserts">Desserts</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input
+              type="url"
+              id="imageUrl"
+              name="imageUrl"
+              [(ngModel)]="formData.imageUrl"
+              required
+              #imageField="ngModel"
+            />
+            @if (imageField.touched && imageField.invalid) {
+              <span class="error">Valid image URL is required</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="ingredients">Ingredients (one per line)</label>
+            <textarea
+              id="ingredients"
+              name="ingredients"
+              [(ngModel)]="formData.ingredients"
+              required
+              rows="8"
+              #ingredientsField="ngModel"
+            ></textarea>
+            @if (ingredientsField.touched && ingredientsField.invalid) {
+              <span class="error">Ingredients are required</span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="instructions">Instructions (one step per line)</label>
+            <textarea
+              id="instructions"
+              name="instructions"
+              [(ngModel)]="formData.instructions"
+              required
+              rows="10"
+              #instructionsField="ngModel"
+            ></textarea>
+            @if (instructionsField.touched && instructionsField.invalid) {
+              <span class="error">Instructions are required</span>
+            }
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" [disabled]="recipeForm.invalid" class="button">
+              {{ isEditMode ? 'Update Recipe' : 'Create Recipe' }}
+            </button>
+            <a routerLink="/recipes" class="button alt">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

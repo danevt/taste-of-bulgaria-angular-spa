@@ -1,5 +1,3 @@
-//!Add RecipeBoard catalog with category filtering
-
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recipe } from '../../../models';

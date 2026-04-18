@@ -24,7 +24,13 @@ export const routes: Routes = [
   },
   {
     path: 'recipes',
-    loadComponent: () => import('./features/recipes/recipe-board').then((c) => c.RecipeBoard),
+    loadComponent: () =>
+      import('./features/recipes/recipe-board/recipe-board').then((c) => c.RecipeBoard),
+  },
+  {
+    path: 'recipes/:id',
+    loadComponent: () =>
+      import('./features/recipes/recipe-content/recipe-content').then((c) => c.RecipeContent),
   },
   {
     path: '**',

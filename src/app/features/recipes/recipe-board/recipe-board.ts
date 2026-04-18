@@ -2,8 +2,8 @@
 
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Recipe } from '../../models';
-import { RecipeService } from '../../core/services';
+import { Recipe } from '../../../models';
+import { RecipeService } from '../../../core/services';
 
 @Component({
   selector: 'app-recipe-board',

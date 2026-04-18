@@ -33,6 +33,18 @@ export const routes: Routes = [
       import('./features/recipes/recipe-content/recipe-content').then((c) => c.RecipeContent),
   },
   {
+    path: 'recipes/new',
+    loadComponent: () =>
+      import('./features/recipes/new-recipe/new-recipe').then((c) => c.NewRecipe),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'recipes/:id/edit',
+    loadComponent: () =>
+      import('./features/recipes/new-recipe/new-recipe').then((c) => c.NewRecipe),
+    canActivate: [authGuard],
+  },
+  {
     path: '**',
     component: NotFound,
   },

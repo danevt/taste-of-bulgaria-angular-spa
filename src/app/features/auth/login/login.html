@@ -1,1 +1,52 @@
-<p>login works!</p>
+<div class="auth-container">
+  <div class="auth-form-wrapper left">
+    <div class="auth-form">
+      <h2>Login</h2>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@mail.com"
+            ngModel
+            required
+            email
+            #emailField="ngModel"
+          />
+          @if (emailField.touched && emailField.invalid) {
+            <span class="error">Valid email is required</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+            ngModel
+            required
+            minlength="5"
+            #passwordField="ngModel"
+          />
+          @if (passwordField.touched && passwordField.invalid) {
+            <span class="error">Password must be at least 5 characters</span>
+          }
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid && loginForm.dirty" class="button">
+          Login
+        </button>
+      </form>
+
+      <p class="auth-redirect">
+        Don't have an account? <a routerLink="/register">Register here</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-image right"></div>
+</div>

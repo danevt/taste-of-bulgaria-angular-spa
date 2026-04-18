@@ -1,4 +1,4 @@
-<div id="header-wrapper" [class.sticky]="isSticky">
+<div id="header-wrapper">
   <div class="container">
     <header id="header">
       <div class="inner">
@@ -14,6 +14,7 @@
         <nav id="nav">
           <ul>
             <li><a routerLink="/recipes">Catalog</a></li>
+
             @if (isLoggedIn()) {
               <li><a routerLink="/profile">Profile</a></li>
               <li><a (click)="logout()" style="cursor: pointer">Logout</a></li>

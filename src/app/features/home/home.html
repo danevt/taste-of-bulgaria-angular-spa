@@ -1,3 +1,4 @@
+<!-- src/app/features/home/home.html -->
 <div class="homepage">
   <div id="banner">
     <h2>
@@ -27,7 +28,11 @@
 
             <div class="col-4 col-12-medium">
               <section>
-                <a href="#" class="image featured">
+                <a
+                  [routerLink]="['/recipes']"
+                  [queryParams]="{ category: 'Salads & Appetizers' }"
+                  class="image featured"
+                >
                   <img src="/assets/images/category-salads.jpg" alt="salads" />
                 </a>
                 <h3 style="text-align: center; margin-top: 10px">~ Salads & Appetizers ~</h3>
@@ -36,7 +41,11 @@
 
             <div class="col-4 col-12-medium">
               <section>
-                <a href="#" class="image featured">
+                <a
+                  [routerLink]="['/recipes']"
+                  [queryParams]="{ category: 'Main Dishes' }"
+                  class="image featured"
+                >
                   <img src="/assets/images/category-main.jpg" alt="main dishes" />
                 </a>
                 <h3 style="text-align: center; margin-top: 10px">~ Main Dishes ~</h3>
@@ -45,7 +54,11 @@
 
             <div class="col-4 col-12-medium">
               <section>
-                <a href="#" class="image featured">
+                <a
+                  [routerLink]="['/recipes']"
+                  [queryParams]="{ category: 'Desserts' }"
+                  class="image featured"
+                >
                   <img src="/assets/images/category-desserts.jpg" alt="desserts" />
                 </a>
                 <h3 style="text-align: center; margin-top: 10px">~ Desserts ~</h3>
@@ -70,50 +83,26 @@
               <section class="box article-list">
                 <h2>~~~ Recent Recipes ~~~</h2>
 
-                <article class="box excerpt">
-                  <a href="#" class="image left">
-                    <img src="/images/recipe-shopska-salad.jpg" alt="shopska salad" />
-                  </a>
-                  <div class="content">
-                    <header>
-                      <span class="date">Apr 05</span>
-                      <h3>
-                        <a href="#">Shopska Salad</a>
-                      </h3>
-                    </header>
-                    <p>Fresh tomatoes, cucumbers, peppers, onion and sirene cheese.</p>
-                  </div>
-                </article>
-
-                <article class="box excerpt">
-                  <a href="#" class="image left">
-                    <img src="/images/recipe-banitsa.jpg" alt="banitsa" />
-                  </a>
-                  <div class="content">
-                    <header>
-                      <span class="date">Apr 02</span>
-                      <h3>
-                        <a href="#">Banitsa</a>
-                      </h3>
-                    </header>
-                    <p>Traditional pastry with eggs and sirene cheese.</p>
-                  </div>
-                </article>
-
-                <article class="box excerpt">
-                  <a href="#" class="image left">
-                    <img src="/images/recipe-kavarma.jpg" alt="kavarma" />
-                  </a>
-                  <div class="content">
-                    <header>
-                      <span class="date">Mar 28</span>
-                      <h3>
-                        <a href="#">Pork Kavarma</a>
-                      </h3>
-                    </header>
-                    <p>Slow-cooked pork with vegetables in a clay pot.</p>
-                  </div>
-                </article>
+                @for (recipe of latestRecipes; track recipe._id) {
+                  <article class="box excerpt">
+                    <a [routerLink]="['/recipes', recipe._id]" class="image left">
+                      <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                    </a>
+                    <div class="content">
+                      <header>
+                        <span class="date">{{ recipe.createdAt | date: 'MMM dd' }}</span>
+                        <h3>
+                          <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+                        </h3>
+                      </header>
+                      <p>{{ recipe.instructions[0] }}</p>
+                    </div>
+                  </article>
+                } @empty {
+                  <p style="font-size: 1.3em; text-align: center; margin: 3em 0">
+                    No recipes yet. <a routerLink="/recipes/new">Be the first to add one!</a>
+                  </p>
+                }
               </section>
             </div>
           </div>

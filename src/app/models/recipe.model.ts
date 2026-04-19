@@ -1,3 +1,4 @@
+import { Comment } from './comment.model';
 export interface Recipe {
   _id: string;
   name: string;
@@ -6,7 +7,7 @@ export interface Recipe {
   instructions: string[];
   imageUrl: string;
   userId: string | { _id: string; username: string };
-  comments: string[] | Comment[];
+  comments: Comment[];
   favorites: string[];
   createdAt: string;
   updatedAt: string;

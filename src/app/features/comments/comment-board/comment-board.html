@@ -1,1 +1,28 @@
-<p>comment-board works!</p>
+<section class="comments-section">
+  <h3>Comments ({{ comments.length }})</h3>
+
+  @if (isLoggedIn()) {
+    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)" class="comment-form">
+      <textarea
+        name="commentText"
+        [(ngModel)]="newCommentText"
+        placeholder="Add a comment..."
+        required
+        rows="3"
+      ></textarea>
+      <button type="submit" [disabled]="commentForm.invalid" class="button">Post Comment</button>
+    </form>
+  }
+
+  <div class="comments-list">
+    @for (comment of comments; track comment._id) {
+      <app-comment-item
+        [comment]="comment"
+        [recipeId]="recipeId"
+        (deleted)="onCommentDeleted($event)"
+      />
+    } @empty {
+      <p>No comments yet. Be the first to comment!</p>
+    }
+  </div>
+</section>

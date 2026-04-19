@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RecipeService, AuthService } from '../../../core/services';
 import { Recipe } from '../../../models';
 import { DatePipe } from '@angular/common';
+import { CommentBoard } from '../../comments/comment-board/comment-board';
 
 @Component({
   selector: 'app-recipe-content',
   standalone: true,
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, CommentBoard],
   templateUrl: './recipe-content.html',
   styleUrl: './recipe-content.css',
 })

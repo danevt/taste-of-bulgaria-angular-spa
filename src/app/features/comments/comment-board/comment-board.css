@@ -1,0 +1,29 @@
+.comments-section {
+    max-width: 800px;
+    margin: 3em auto 0;
+    padding-top: 3em;
+    border-top: solid 1px #dbdbdb;
+}
+
+.comment-form {
+    margin-bottom: 2em;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-family: inherit;
+    margin-bottom: 1em;
+    resize: vertical;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 2px 1px #4091bf;
+}
+
+.comments-list {
+    margin-top: 2em;
+}

@@ -22,10 +22,16 @@
               <a [routerLink]="['/recipes', recipe._id]" class="image featured">
                 <img [src]="recipe.imageUrl" [alt]="recipe.name" />
               </a>
+
               <h3>
-                <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+                <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name | sliceTitle: 40 }}</a>
               </h3>
-              <span class="category-badge">{{ recipe.category }}</span>
+
+              <div class="card-info">
+                <span class="category-badge">{{ recipe.category }}</span>
+
+                <span class="date">{{ recipe.createdAt | timeAgo }}</span>
+              </div>
             </section>
           </div>
         } @empty {

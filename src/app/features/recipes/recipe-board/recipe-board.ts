@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recipe } from '../../../models';
 import { RecipeService } from '../../../core/services';
+import { SliceTitle, TimeAgo } from '../../../shared/pipes';
 
 @Component({
   selector: 'app-recipe-board',
-  imports: [RouterLink],
+  imports: [RouterLink, SliceTitle, TimeAgo],
   templateUrl: './recipe-board.html',
   styleUrl: './recipe-board.css',
 })

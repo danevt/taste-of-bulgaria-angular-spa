@@ -36,13 +36,16 @@
               <a [routerLink]="['/recipes', recipe._id, 'edit']" class="button">Edit</a>
               <button (click)="deleteRecipe()" class="button alt">Delete</button>
             </div>
+          } @else if (isLoggedIn()) {
+            <div class="recipe-actions">
+              <button (click)="toggleFavorite()" class="button">
+                {{ isFavorited ? 'Remove from Favorites' : 'Add to Favorites' }}
+              </button>
+            </div>
           }
         </article>
 
-        <section class="comments-section">
-          <h3>Comments</h3>
-          <app-comment-board [recipeId]="recipe._id" [comments]="recipe.comments" />
-        </section>
+        <app-comment-board [recipeId]="recipe._id" [comments]="recipe.comments" />
       </div>
     </div>
   </div>

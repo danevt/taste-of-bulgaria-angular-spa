@@ -21,6 +21,7 @@ export class RecipeContent implements OnInit {
   recipe: Recipe | null = null;
   isOwner = false;
   isLoggedIn = this.authService.isLoggedIn;
+  isFavorited = false;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -34,6 +35,7 @@ export class RecipeContent implements OnInit {
           typeof recipe.userId === 'object'
             ? recipe.userId._id === currentUserId
             : recipe.userId === currentUserId;
+        this.isFavorited = recipe.favorites.includes(currentUserId || '');
       },
       error: (err) => console.error('Failed to load recipe', err),
     });
@@ -45,6 +47,19 @@ export class RecipeContent implements OnInit {
     this.recipeService.deleteRecipe(this.recipe._id).subscribe({
       next: () => this.router.navigate(['/recipes']),
       error: (err) => console.error('Failed to delete recipe', err),
+    });
+  }
+
+  toggleFavorite() {
+    if (!this.recipe) return;
+
+    this.recipeService.toggleFavorite(this.recipe._id).subscribe({
+      next: (updatedRecipe) => {
+        this.recipe = updatedRecipe;
+        const currentUserId = this.authService.getCurrentUserId();
+        this.isFavorited = updatedRecipe.favorites.includes(currentUserId || '');
+      },
+      error: (err) => console.error('Failed to toggle favorite', err),
     });
   }
 }

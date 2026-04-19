@@ -1,0 +1,8 @@
+@if (errorMessage()) {
+  <div class="error-notification">
+    <div class="error-content">
+      <span>{{ errorMessage() }}</span>
+      <button (click)="clearError()" class="close-btn">&times;</button>
+    </div>
+  </div>
+}

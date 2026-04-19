@@ -28,8 +28,8 @@ export class CommentBoard implements OnInit {
     if (form.invalid || !this.newCommentText.trim()) return;
 
     this.commentService.createComment(this.recipeId, this.newCommentText).subscribe({
-      next: (updatedRecipe) => {
-        this.comments = updatedRecipe.comments as Comment[];
+      next: (newComment) => {
+        this.comments = [...this.comments, newComment];
         this.newCommentText = '';
         form.reset();
       },

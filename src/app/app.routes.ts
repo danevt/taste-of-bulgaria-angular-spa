@@ -28,15 +28,15 @@ export const routes: Routes = [
       import('./features/recipes/recipe-board/recipe-board').then((c) => c.RecipeBoard),
   },
   {
-    path: 'recipes/:id',
-    loadComponent: () =>
-      import('./features/recipes/recipe-content/recipe-content').then((c) => c.RecipeContent),
-  },
-  {
     path: 'recipes/new',
     loadComponent: () =>
       import('./features/recipes/new-recipe/new-recipe').then((c) => c.NewRecipe),
     canActivate: [authGuard],
+  },
+  {
+    path: 'recipes/:id',
+    loadComponent: () =>
+      import('./features/recipes/recipe-content/recipe-content').then((c) => c.RecipeContent),
   },
   {
     path: 'recipes/:id/edit',

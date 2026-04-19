@@ -38,6 +38,30 @@
             }
           </div>
         </section>
+
+        <section class="user-recipes">
+          <h3>Favorite Recipes ({{ favoriteRecipes.length }})</h3>
+
+          <div class="row">
+            @for (recipe of favoriteRecipes; track recipe._id) {
+              <div class="col-4 col-12-medium">
+                <section class="recipe-card">
+                  <a [routerLink]="['/recipes', recipe._id]" class="image featured">
+                    <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                  </a>
+                  <h3>
+                    <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+                  </h3>
+                  <span class="category-badge">{{ recipe.category }}</span>
+                </section>
+              </div>
+            } @empty {
+              <div class="col-12">
+                <p>No favorite recipes yet. <a routerLink="/recipes">Explore recipes!</a></p>
+              </div>
+            }
+          </div>
+        </section>
       </div>
     </div>
   </div>

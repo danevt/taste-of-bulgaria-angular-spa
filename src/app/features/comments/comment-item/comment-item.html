@@ -1,1 +1,10 @@
-<p>comment-item works!</p>
+<article class="comment-item">
+  <header>
+    <strong>{{ username }}</strong>
+    <span class="date">{{ comment.createdAt | timeAgo }}</span>
+  </header>
+  <p>{{ comment.text }}</p>
+  @if (isOwner) {
+    <button (click)="deleteComment()" class="delete-btn">Delete</button>
+  }
+</article>

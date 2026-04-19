@@ -1,1 +1,49 @@
-<p>recipe-content works!</p>
+@if (recipe) {
+  <div class="wrapper style1">
+    <div class="inner">
+      <div class="container">
+        <article class="recipe-details">
+          <header>
+            <h2>{{ recipe.name }}</h2>
+            <span class="category-badge">{{ recipe.category }}</span>
+            <span class="date">Posted on {{ recipe.createdAt | date: 'MMM dd, yyyy' }}</span>
+          </header>
+
+          <div class="recipe-image">
+            <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+          </div>
+
+          <section class="ingredients">
+            <h3>Ingredients</h3>
+            <ul>
+              @for (ingredient of recipe.ingredients; track $index) {
+                <li>{{ ingredient }}</li>
+              }
+            </ul>
+          </section>
+
+          <section class="instructions">
+            <h3>Instructions</h3>
+            <ol>
+              @for (step of recipe.instructions; track $index) {
+                <li>{{ step }}</li>
+              }
+            </ol>
+          </section>
+
+          @if (isOwner) {
+            <div class="recipe-actions">
+              <a [routerLink]="['/recipes', recipe._id, 'edit']" class="button">Edit</a>
+              <button (click)="deleteRecipe()" class="button alt">Delete</button>
+            </div>
+          }
+        </article>
+
+        <section class="comments-section">
+          <h3>Comments</h3>
+          <p>Comments feature coming soon...</p>
+        </section>
+      </div>
+    </div>
+  </div>
+}

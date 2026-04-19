@@ -1,7 +1,17 @@
+/* .not-found-bg {
+    background-image: url('/assets/images/tvoqta-snimka.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    padding: 0 !important;
+} */
+
 .not-found-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 5em 2em;
-    max-width: 600px;
+    min-height: 70vh;
     margin: 0 auto;
 }
 

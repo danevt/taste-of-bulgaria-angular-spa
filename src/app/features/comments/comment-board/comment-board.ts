@@ -24,11 +24,21 @@ export class CommentBoard implements OnInit {
     // Comments are passed from parent (RecipeContent)
   }
 
+
   onSubmit(form: NgForm) {
     if (form.invalid || !this.newCommentText.trim()) return;
 
     this.commentService.createComment(this.recipeId, this.newCommentText).subscribe({
       next: (newComment) => {
+        const currentUser = this.authService.currentUser();
+        if (currentUser) {
+          newComment.userId = {
+            _id: currentUser._id,
+            username: currentUser.username,
+            email: currentUser.email,
+          };
+        }
+
         this.comments = [...this.comments, newComment];
         this.newCommentText = '';
         form.reset();

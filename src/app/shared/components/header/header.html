@@ -13,9 +13,10 @@
 
         <nav id="nav">
           <ul>
-            <li><a routerLink="/recipes">Catalog</a></li>
+            <li><a routerLink="/recipes">All Recipes</a></li>
 
             @if (isLoggedIn()) {
+              <li><a routerLink="recipes/new">Add Recipe</a></li>
               <li><a routerLink="/profile">Profile</a></li>
               <li><a (click)="logout()" style="cursor: pointer">Logout</a></li>
             } @else {

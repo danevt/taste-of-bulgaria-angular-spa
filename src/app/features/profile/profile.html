@@ -1,1 +1,44 @@
-<p>profile works!</p>
+@if (user) {
+  <div class="wrapper style1">
+    <div class="inner">
+      <div class="container">
+        <header class="major">
+          <h2>My Profile</h2>
+          <p>Welcome, {{ user.username }}!</p>
+        </header>
+
+        <section class="user-info">
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Member since:</strong> {{ user.createdAt | date: 'MMM dd, yyyy' }}</p>
+        </section>
+
+        <section class="user-recipes">
+          <h3>My Recipes ({{ userRecipes.length }})</h3>
+
+          <div class="row">
+            @for (recipe of userRecipes; track recipe._id) {
+              <div class="col-4 col-12-medium">
+                <section class="recipe-card">
+                  <a [routerLink]="['/recipes', recipe._id]" class="image featured">
+                    <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                  </a>
+                  <h3>
+                    <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+                  </h3>
+                  <span class="category-badge">{{ recipe.category }}</span>
+                </section>
+              </div>
+            } @empty {
+              <div class="col-12">
+                <p>
+                  You haven't created any recipes yet.
+                  <a routerLink="/recipes/new">Add your first recipe!</a>
+                </p>
+              </div>
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+}

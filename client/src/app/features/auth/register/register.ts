@@ -23,6 +23,8 @@ export class Register {
 
     if (password !== rePassword) {
       console.error('Passwords do not match');
+      form.controls['password'].reset();
+      form.controls['rePassword'].reset();
       this.markFormAsTouched(form);
       return;
     }

@@ -25,6 +25,7 @@ export class Login {
       next: () => this.router.navigate(['/home']),
       error: (err) => {
         console.error('Login failed', err);
+        form.controls['password'].reset();
         this.markFormAsTouched(form);
       },
     });

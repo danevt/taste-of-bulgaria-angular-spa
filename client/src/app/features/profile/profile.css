@@ -1,44 +1,84 @@
-.user-info {
-    max-width: 600px;
-    margin: 0 auto 3em;
-    padding: 2em;
+.profile-page-wrapper.style1 {
+    padding-top: 180px;
+}
+
+.profile-page-wrapper .major {
+    text-align: center;
+    margin-bottom: 4em;
+    border: none;
+}
+
+.profile-page-wrapper .major h2 {
+    font-size: 3.5em;
+    font-weight: 800;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.4em;
+    text-transform: none;
+}
+
+.profile-page-wrapper .major p {
+    font-size: 2em;
+    font-weight: 700;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    margin: 2em 0 0 0;
+}
+
+.profile-page-wrapper .user-info {
+    max-width: 850px;
+    margin: 0 auto 4em;
+    padding: 2.5em;
     background: #f9f9f9;
-    border-radius: 8px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-page-wrapper .user-info p {
+    margin: 0;
+    font-size: 1.25em;
+    color: #222;
+}
+
+.profile-page-wrapper .user-recipes h3 {
     text-align: center;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #222;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 2.5em 0 1.5em;
+    padding: 20px 0;
+    border-top: 2px solid #dbdbdb;
+    border-bottom: 2px solid #dbdbdb;
+    text-transform: uppercase;
 }
 
-.user-info p {
-    margin-bottom: 0.5em;
-}
-
-.user-recipes {
-    margin-top: 3em;
-}
-
-.user-recipes h3 {
-    text-align: center;
+.profile-page-wrapper .recipe-card {
     margin-bottom: 2em;
 }
 
-.recipe-card {
-    margin-bottom: 2em;
-}
-
-.recipe-card h3 {
+.profile-page-wrapper .recipe-card h3 {
     text-align: center;
     margin: 1em 0 0.5em;
+    border: none;
+    padding: 0;
+    text-shadow: none;
+    text-transform: none;
 }
 
-.recipe-card h3 a {
+.profile-page-wrapper .recipe-card h3 a {
     color: #404248;
     text-decoration: none;
+    font-weight: 800;
+    font-size: 1.5rem;
 }
 
-.recipe-card h3 a:hover {
+.profile-page-wrapper .recipe-card h3 a:hover {
     color: #4091bf;
 }
 
-.category-badge {
+.profile-page-wrapper .category-badge {
     display: block;
     text-align: center;
     font-size: 0.85em;
@@ -46,4 +86,17 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 700;
+}
+
+.profile-page-wrapper .empty-state {
+    text-align: center;
+    padding: 4em 0;
+    width: 100%;
+}
+
+.profile-page-wrapper .empty-state p {
+    font-size: 1.6em;
+    font-weight: 800;
+    color: #333;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }

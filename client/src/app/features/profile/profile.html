@@ -1,10 +1,10 @@
 @if (user) {
-  <div class="wrapper style1">
+  <div class="wrapper style1 profile-page-wrapper">
     <div class="inner">
       <div class="container">
         <header class="major">
-          <h2>My Profile</h2>
-          <p>Welcome, {{ user.username }}!</p>
+          <h2 class="main-title">My Profile</h2>
+          <p class="welcome-msg">Welcome, {{ user.username }}!</p>
         </header>
 
         <section class="user-info">
@@ -13,23 +13,26 @@
         </section>
 
         <section class="user-recipes">
-          <h3>My Recipes ({{ userRecipes.length }})</h3>
-
+          <h3 class="section-title">My Recipes ({{ userRecipes.length }})</h3>
           <div class="row">
             @for (recipe of userRecipes; track recipe._id) {
               <div class="col-4 col-12-medium">
                 <section class="recipe-card">
                   <a [routerLink]="['/recipes', recipe._id]" class="image featured">
-                    <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                    <img
+                      [src]="recipe.imageUrl"
+                      [alt]="recipe.name"
+                      (error)="ImageFallback.handleImageError($event, recipe.category)"
+                    />
                   </a>
-                  <h3>
+                  <h3 class="recipe-name">
                     <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
                   </h3>
                   <span class="category-badge">{{ recipe.category }}</span>
                 </section>
               </div>
             } @empty {
-              <div class="col-12">
+              <div class="col-12 empty-state">
                 <p>
                   You haven't created any recipes yet.
                   <a routerLink="/recipes/new">Add your first recipe!</a>
@@ -40,23 +43,26 @@
         </section>
 
         <section class="user-recipes">
-          <h3>Favorite Recipes ({{ favoriteRecipes.length }})</h3>
-
+          <h3 class="section-title">Favorite Recipes ({{ favoriteRecipes.length }})</h3>
           <div class="row">
             @for (recipe of favoriteRecipes; track recipe._id) {
               <div class="col-4 col-12-medium">
                 <section class="recipe-card">
                   <a [routerLink]="['/recipes', recipe._id]" class="image featured">
-                    <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                    <img
+                      [src]="recipe.imageUrl"
+                      [alt]="recipe.name"
+                      (error)="ImageFallback.handleImageError($event, recipe.category)"
+                    />
                   </a>
-                  <h3>
+                  <h3 class="recipe-name">
                     <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
                   </h3>
                   <span class="category-badge">{{ recipe.category }}</span>
                 </section>
               </div>
             } @empty {
-              <div class="col-12">
+              <div class="col-12 empty-state">
                 <p>No favorite recipes yet. <a routerLink="/recipes">Explore recipes!</a></p>
               </div>
             }

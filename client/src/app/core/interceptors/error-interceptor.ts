@@ -11,9 +11,13 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error) => {
       if (error.status === 401) {
-        localStorage.removeItem('currentUser');
-        errorService.setError('Session expired. Please login again.');
-        router.navigate(['/login']);
+        if (error.url?.includes('/login')) {
+          errorService.setError(error.error?.message || 'Wrong email or password');
+        } else {
+          localStorage.removeItem('currentUser');
+          errorService.setError('Session expired. Please login again.');
+          router.navigate(['/login']);
+        }
       } else if (error.status === 403) {
         errorService.setError('You do not have permission to perform this action.');
       } else if (error.status === 404) {

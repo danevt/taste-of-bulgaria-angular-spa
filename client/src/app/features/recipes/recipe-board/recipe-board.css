@@ -28,7 +28,7 @@
 
 #banner {
     width: 100%;
-    min-height: 60vh;
+    min-height: 70vh;
 
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
     padding: 6em 1em;
 
     background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
         url('/assets/images/recipe-board.jpg');
     background-size: cover;
     background-position: center;
@@ -47,9 +47,9 @@
 }
 
 #banner h2 {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 2em;
-    margin-bottom: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 3em;
+    margin-bottom: 2em;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
@@ -58,9 +58,49 @@
     color: #fff;
 }
 
+#banner h2 .subtitle {
+    display: block;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+
+    font-size: 0.65em;
+    margin-top: 0.4em;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
 Д #banner .inspiring-text {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.2em;
     line-height: 1.6em;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+header.major {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+header.major h2,
+header.major p {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+#banner .inspiring-text {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+
+    font-size: 1.2em;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.recipe-card .date {
+    display: block;
+    text-align: center;
+    font-size: 0.75em;
+    color: rgba(0, 0, 0, 0.4);
+    margin-top: 0.3em;
+    font-style: italic;
 }

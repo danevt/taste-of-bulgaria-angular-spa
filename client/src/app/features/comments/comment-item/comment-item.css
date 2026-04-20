@@ -1,45 +1,99 @@
 .comment-item {
-    border-bottom: solid 1px #eee;
-    padding: 1.5em 0;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    width: 100%;
+    min-height: 120px;
+    padding: 25px 45px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
-.comment-item:last-child {
-    border-bottom: 0;
+.comment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .comment-item header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 15px;
 }
 
 .comment-item strong {
-    color: #404248;
-    font-size: 0.95em;
+    color: var(--bulgarian-black, #222);
+    font-size: 1.25em;
+    font-weight: 900;
 }
 
 .comment-item .date {
-    font-size: 0.85em;
-    color: #999;
+    color: #888;
+    font-size: 0.9em;
 }
 
-.comment-item p {
-    margin: 0;
-    color: #7b818c;
+.comment-text {
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.delete-btn {
-    margin-top: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 0.85em;
-    background: #d62612;
-    color: #fff;
-    border: 0;
-    border-radius: 4px;
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.button {
     cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease;
 }
 
-.delete-btn:hover {
-    background: #b81f0f;
+.button.like {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.button.like:hover {
+    background-color: #ffca28 !important;
+    filter: brightness(1.1);
+}
+
+.button.like.active {
+    background-color: #ff9800 !important;
+}
+
+.button.delete {
+    background-color: var(--bulgarian-red) !important;
+    color: var(--pure-white) !important;
+}
+
+.button.delete:hover {
+    filter: brightness(0.9);
+}
+
+.button.like:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+    box-shadow: none;
+}
+
+.button.like:disabled:hover {
+    transform: none;
+    filter: grayscale(0.5) brightness(1);
 }

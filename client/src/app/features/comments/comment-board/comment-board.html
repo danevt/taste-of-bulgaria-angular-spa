@@ -20,6 +20,7 @@
         [comment]="comment"
         [recipeId]="recipeId"
         (deleted)="onCommentDeleted($event)"
+        (liked)="onCommentLiked($event)"
       />
     } @empty {
       <p>No comments yet. Be the first to comment!</p>

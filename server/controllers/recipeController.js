@@ -6,6 +6,10 @@ function getAllRecipes(req, res, next) {
     recipeModel
         .find()
         .populate('userId')
+        .populate({
+            path: 'comments',
+            populate: { path: 'userId' },
+        })
         .then(recipes => res.status(200).json(recipes))
         .catch(next);
 }
@@ -18,6 +22,10 @@ function getLatestRecipes(req, res, next) {
         .sort({ createdAt: -1 })
         .limit(limit)
         .populate('userId')
+        .populate({
+            path: 'comments',
+            populate: { path: 'userId' },
+        })
         .then(recipes => res.status(200).json(recipes))
         .catch(next);
 }
@@ -28,6 +36,10 @@ function getRecipesByCategory(req, res, next) {
     recipeModel
         .find({ category })
         .populate('userId')
+        .populate({
+            path: 'comments',
+            populate: { path: 'userId' },
+        })
         .then(recipes => res.status(200).json(recipes))
         .catch(next);
 }
@@ -137,6 +149,10 @@ function toggleFavorite(req, res, next) {
 
             return recipeModel
                 .findByIdAndUpdate(recipeId, update, { new: true })
+                .populate({
+                    path: 'comments',
+                    populate: { path: 'userId' },
+                })
                 .then(updatedRecipe => res.status(200).json(updatedRecipe));
         })
         .catch(next);

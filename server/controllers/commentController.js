@@ -48,8 +48,11 @@ function createComment(req, res, next) {
                     $push: { comments: comment._id },
                 }),
             ]).then(() => {
-                res.status(200).json(comment);
+                return commentModel.findById(comment._id).populate('userId');
             });
+        })
+        .then(populatedComment => {
+            res.status(200).json(populatedComment);
         })
         .catch(next);
 }
@@ -106,10 +109,8 @@ function likeComment(req, res, next) {
     commentModel
         .findById(commentId)
         .then(comment => {
-            if (!comment) {
+            if (!comment)
                 return res.status(404).json({ message: 'Comment not found!' });
-            }
-
             if (comment.userId.toString() === userId.toString()) {
                 return res
                     .status(403)
@@ -123,6 +124,7 @@ function likeComment(req, res, next) {
 
             return commentModel
                 .findByIdAndUpdate(commentId, update, { new: true })
+                .populate('userId')
                 .then(updatedComment => res.status(200).json(updatedComment));
         })
         .catch(next);

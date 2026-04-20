@@ -40,21 +40,32 @@ input[type='submit'],
 input[type='reset'],
 button,
 .button {
-    transition: background-color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     appearance: none;
     position: relative;
     display: inline-block;
-    background-color: #4091bf;
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)), url('./assets/images/bg02.png');
+
+    background-color: var(--bulgarian-green);
+    background-image:
+        linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2)),
+        url('./assets/images/bg02.png');
+
     border-radius: 8px;
-    box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35),
+        inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35),
+        2px 3px 3px 1px rgba(0, 0, 0, 0.35);
+
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+
     color: #fff !important;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 0.95em;
     letter-spacing: 0.075em;
+
     padding: 1em 2em;
     outline: 0;
     border: 0;
@@ -62,20 +73,28 @@ button,
     cursor: pointer;
 }
 
+button:hover,
+.button:hover,
 input[type='button']:hover,
 input[type='submit']:hover,
-input[type='reset']:hover,
-button:hover,
-.button:hover {
-    background-color: #50a1cf;
+input[type='reset']:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35),
+        inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35),
+        0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
+button:active,
+.button:active,
 input[type='button']:active,
 input[type='submit']:active,
-input[type='reset']:active,
-button:active,
-.button:active {
-    background-color: #3081af;
+input[type='reset']:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        inset 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .button.alt {
@@ -83,11 +102,11 @@ button:active,
 }
 
 .button.alt:hover {
-    background-color: #565a62;
+    filter: brightness(1.1);
 }
 
 .button.alt:active {
-    background-color: #363a42;
+    filter: brightness(0.9);
 }
 
 form label {

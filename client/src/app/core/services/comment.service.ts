@@ -12,6 +12,14 @@ export class CommentService {
 
   constructor(private http: HttpClient) {}
 
+  likeComment(recipeId: string, commentId: string): Observable<Comment> {
+    return this.http.put<Comment>(
+      `${RECIPES_BASE}/${recipeId}/comments/${commentId}/like`,
+      {},
+      this.options,
+    );
+  }
+
   getLatestComments(): Observable<Comment[]> {
     return this.http.get<Comment[]>(COMMENTS_BASE, this.options);
   }

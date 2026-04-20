@@ -266,3 +266,42 @@ ul.divided li:first-child {
 .icon>.label {
     display: none;
 }
+
+/* --- Default Image Protection System --- */
+
+img.is-default {
+    filter: grayscale(40%) brightness(0.8);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+
+.image.featured,
+.recipe-image,
+.image.left,
+.image.fit {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.image.featured:has(img.is-default)::after,
+.recipe-image:has(img.is-default)::after,
+.image.left:has(img.is-default)::after,
+.image.fit:has(img.is-default)::after {
+    content: "Recipe Illustration";
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}

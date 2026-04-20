@@ -10,7 +10,11 @@
           </header>
 
           <div class="recipe-image">
-            <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+            <img
+              [src]="recipe.imageUrl"
+              [alt]="recipe.name"
+              (error)="ImageFallback.handleImageError($event, recipe.category)"
+            />
           </div>
 
           <section class="ingredients">
@@ -34,7 +38,7 @@
           @if (isOwner) {
             <div class="recipe-actions">
               <a [routerLink]="['/recipes', recipe._id, 'edit']" class="button">Edit</a>
-              <button (click)="deleteRecipe()" class="button alt">Delete</button>
+              <button (click)="deleteRecipe()" class="button alt delete">Delete</button>
             </div>
           } @else if (isLoggedIn()) {
             <div class="recipe-actions">

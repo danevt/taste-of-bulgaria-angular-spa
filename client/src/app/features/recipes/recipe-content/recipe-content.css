@@ -1,20 +1,30 @@
 .recipe-details {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 4rem auto 0;
 }
 
 .recipe-details header {
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 }
 
 .recipe-details h2 {
+    font-size: 2.6rem;
     margin-bottom: 0.5em;
+    text-shadow:
+        2px 2px 0 rgba(0, 0, 0, 0.25),
+        4px 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+.recipe-details header .date {
+    display: block;
+    font-size: 0.65rem;
+    color: rgba(0, 0, 0, 0.55);
 }
 
 .category-badge {
     display: block;
-    font-size: 0.9em;
+    font-size: 1em;
     color: #696969;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -29,12 +39,20 @@
 .recipe-image img {
     width: 100%;
     border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.9),
+        0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .ingredients,
 .instructions {
+    padding-left: 1.5rem;
     margin-bottom: 3em;
+}
+
+.instructions {
+    border-top: 1px solid #dbdbdb;
+    padding-top: 1rem;
 }
 
 .ingredients h3,
@@ -42,14 +60,22 @@
     margin-bottom: 1em;
 }
 
-.ingredients ul,
-.instructions ol {
+.ingredients ul {
+    list-style-type: disc;
     padding-left: 2em;
+    margin-bottom: 3em;
+}
+
+.instructions ol {
+    list-style-type: decimal;
+    padding-left: 2em;
+    margin-bottom: 3em;
 }
 
 .ingredients li,
 .instructions li {
     margin-bottom: 0.5em;
+    padding-left: 0.5em;
 }
 
 .recipe-actions {
@@ -64,4 +90,30 @@
     margin: 3em auto 0;
     padding-top: 3em;
     border-top: solid 1px #dbdbdb;
+}
+
+.comments-section p {
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.55);
+    font-style: italic;
+}
+
+.comments-section .comment {
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+    text-align: left;
+}
+
+.recipe-actions .button.delete {
+    background-color: var(--bulgarian-red);
+    color: var(--pure-white) !important;
+    border-color: var(--bulgarian-red);
+    transition: filter 0.3s ease;
+}
+
+.recipe-actions .button.delete:hover {
+    filter: brightness(0.9);
+    background-color: var(--bulgarian-red);
+    color: var(--pure-white) !important;
 }

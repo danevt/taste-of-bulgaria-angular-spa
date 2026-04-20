@@ -1,55 +1,137 @@
-.form-container {
-    max-width: 700px;
-    margin: 0 auto;
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+    background: url('/assets/images/new-recipe.jpg') center/cover no-repeat fixed;
+    position: relative;
+    overflow-y: auto;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
-.form-container h2 {
+.auth-form-wrapper {
+    flex: 0 0 100%;
+    max-width: 550px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2em;
+    background: rgba(48, 50, 56, 0.75);
+    z-index: 5;
+    position: relative;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.auth-form {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.auth-form h2 {
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 1.2em;
+    color: #404248;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow:
+        1px 1px 0px #bcbcbc,
+        2px 2px 0px #9c9c9c,
+        4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.2em;
 }
 
 .form-group label {
     display: block;
     text-transform: uppercase;
     font-weight: 800;
-    letter-spacing: 0.04em;
+    font-size: 0.75em;
     color: #404248;
     margin-bottom: 0.5em;
-    font-size: 0.8em;
+    margin-left: 5px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 0.75em 1em;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    font-size: 1em;
+    padding: 0.85em 1.2em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.95em;
     font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0a5ab;
+    opacity: 0.4;
+    font-weight: 400;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    box-shadow: 0 0 2px 1px #4091bf;
+    border-color: var(--bulgarian-green);
+    box-shadow: 0 4px 12px rgba(0, 165, 80, 0.2);
 }
 
 .error {
     display: block;
-    color: #d62612;
-    font-size: 0.85em;
-    margin-top: 0.5em;
+    color: var(--bulgarian-red);
+    font-size: 0.8em;
+    margin-top: 0.4em;
+    margin-left: 5px;
 }
 
 .form-actions {
     display: flex;
-    gap: 1em;
-    justify-content: center;
-    margin-top: 2em;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2.5em;
+}
+
+.button {
+    width: 100%;
+    background-color: var(--bulgarian-green);
+    color: #000;
+    border: 1px solid #6666668c;
+    padding: 1em;
+    border-radius: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button.alt {
+    background-color: var(--bulgarian-red);
+    color: #fff !important;
+    border-color: var(--bulgarian-red);
+}
+
+.button:hover:not(:disabled) {
+    filter: brightness(0.9);
+    transform: scale(1.02);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
 }

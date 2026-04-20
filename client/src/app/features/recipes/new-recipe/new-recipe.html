@@ -1,87 +1,106 @@
-<div class="wrapper style1">
-  <div class="inner">
-    <div class="container">
-      <div class="form-container">
-        <h2>{{ isEditMode ? 'Edit Recipe' : 'Add New Recipe' }}</h2>
+<div class="auth-container">
+  <div class="auth-form-wrapper">
+    <div class="auth-form">
+      <h2>{{ isEditMode ? 'Edit Recipe' : 'Add New Recipe' }}</h2>
 
-        <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
-          <div class="form-group">
-            <label for="name">Recipe Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              [(ngModel)]="formData.name"
-              required
-              #nameField="ngModel"
-            />
-            @if (nameField.touched && nameField.invalid) {
-              <span class="error">Recipe name is required</span>
-            }
-          </div>
+      <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
+        <div class="form-group">
+          <label for="name">Recipe Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="e.g. Traditional Banitsa"
+            [(ngModel)]="formData.name"
+            required
+            minlength="3"
+            maxlength="30"
+            #nameField="ngModel"
+          />
+          @if (nameField.touched && nameField.invalid) {
+            <span class="error">Name must be between 3 and 30 characters</span>
+          }
+        </div>
 
-          <div class="form-group">
-            <label for="category">Category</label>
-            <select id="category" name="category" [(ngModel)]="formData.category" required>
-              <option value="Main Dishes">Main Dishes</option>
-              <option value="Salads & Appetizers">Salads & Appetizers</option>
-              <option value="Desserts">Desserts</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select
+            id="category"
+            name="category"
+            [(ngModel)]="formData.category"
+            required
+            #categoryField="ngModel"
+          >
+            <option value="" disabled selected>Select Category</option>
+            <option value="Main Dishes">Main Dishes</option>
+            <option value="Salads & Appetizers">Salads & Appetizers</option>
+            <option value="Desserts">Desserts</option>
+          </select>
+          @if (categoryField.touched && (formData.category === '' || categoryField.invalid)) {
+            <span class="error">Please select a category</span>
+          }
+        </div>
 
-          <div class="form-group">
-            <label for="imageUrl">Image URL</label>
-            <input
-              type="url"
-              id="imageUrl"
-              name="imageUrl"
-              [(ngModel)]="formData.imageUrl"
-              required
-              #imageField="ngModel"
-            />
-            @if (imageField.touched && imageField.invalid) {
-              <span class="error">Valid image URL is required</span>
-            }
-          </div>
+        <div class="form-group">
+          <label for="imageUrl">Image URL</label>
+          <input
+            type="text"
+            id="imageUrl"
+            name="imageUrl"
+            placeholder="https://... or http://..."
+            [(ngModel)]="formData.imageUrl"
+            required
+            pattern="^(http:\/\/|https:\/\/|\/assets\/).*$"
+            #imageField="ngModel"
+          />
+          @if (imageField.touched && imageField.invalid) {
+            <span class="error">Valid image URL is required</span>
+          }
+        </div>
 
-          <div class="form-group">
-            <label for="ingredients">Ingredients (one per line)</label>
-            <textarea
-              id="ingredients"
-              name="ingredients"
-              [(ngModel)]="formData.ingredients"
-              required
-              rows="8"
-              #ingredientsField="ngModel"
-            ></textarea>
-            @if (ingredientsField.touched && ingredientsField.invalid) {
-              <span class="error">Ingredients are required</span>
-            }
-          </div>
+        <div class="form-group">
+          <label for="ingredients">Ingredients</label>
+          <textarea
+            id="ingredients"
+            name="ingredients"
+            placeholder="List ingredients here..."
+            [(ngModel)]="formData.ingredients"
+            required
+            minlength="10"
+            maxlength="300"
+            rows="5"
+            #ingredientsField="ngModel"
+          ></textarea>
+          @if (ingredientsField.touched && ingredientsField.invalid) {
+            <span class="error">Between 10 and 300 characters</span>
+          }
+        </div>
 
-          <div class="form-group">
-            <label for="instructions">Instructions (one step per line)</label>
-            <textarea
-              id="instructions"
-              name="instructions"
-              [(ngModel)]="formData.instructions"
-              required
-              rows="10"
-              #instructionsField="ngModel"
-            ></textarea>
-            @if (instructionsField.touched && instructionsField.invalid) {
-              <span class="error">Instructions are required</span>
-            }
-          </div>
+        <div class="form-group">
+          <label for="instructions">Instructions</label>
+          <textarea
+            id="instructions"
+            name="instructions"
+            placeholder="Step by step instructions..."
+            [(ngModel)]="formData.instructions"
+            required
+            minlength="20"
+            maxlength="1500"
+            rows="6"
+            #instructionsField="ngModel"
+          ></textarea>
+          @if (instructionsField.touched && instructionsField.invalid) {
+            <span class="error">Between 20 and 1500 characters</span>
+          }
+        </div>
 
-          <div class="form-actions">
-            <button type="submit" [disabled]="recipeForm.invalid" class="button">
-              {{ isEditMode ? 'Update Recipe' : 'Create Recipe' }}
-            </button>
-            <a routerLink="/recipes" class="button alt">Cancel</a>
-          </div>
-        </form>
-      </div>
+        <div class="form-actions">
+          <button type="submit" [disabled]="recipeForm.invalid" class="button">
+            {{ isEditMode ? 'Update Recipe' : 'Create Recipe' }}
+          </button>
+          <a routerLink="/recipes" class="button alt">Cancel</a>
+        </div>
+      </form>
     </div>
   </div>
 </div>

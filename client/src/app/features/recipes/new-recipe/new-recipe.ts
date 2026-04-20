@@ -19,7 +19,7 @@ export class NewRecipe implements OnInit {
 
   formData = {
     name: '',
-    category: 'Main Dishes',
+    category: '',
     ingredients: '',
     instructions: '',
     imageUrl: '',
@@ -42,7 +42,7 @@ export class NewRecipe implements OnInit {
         },
         error: (err) => console.error('Failed to load recipe', err),
       });
-    }
+    } 
   }
 
   onSubmit(form: NgForm) {

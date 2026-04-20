@@ -4,6 +4,7 @@ import { RecipeService, AuthService } from '../../../core/services';
 import { Recipe } from '../../../models';
 import { DatePipe } from '@angular/common';
 import { CommentBoard } from '../../comments/comment-board/comment-board';
+import { ImageFallback } from '../../../core/utils';
 
 @Component({
   selector: 'app-recipe-content',
@@ -22,6 +23,8 @@ export class RecipeContent implements OnInit {
   isOwner = false;
   isLoggedIn = this.authService.isLoggedIn;
   isFavorited = false;
+
+  readonly ImageFallback = ImageFallback;
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');

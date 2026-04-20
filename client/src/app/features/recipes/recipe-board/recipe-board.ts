@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Recipe } from '../../../models';
 import { RecipeService } from '../../../core/services';
 import { SliceTitle, TimeAgo } from '../../../shared/pipes';
+import { ImageFallback } from '../../../core/utils';
 
 @Component({
   selector: 'app-recipe-board',
@@ -13,6 +14,8 @@ import { SliceTitle, TimeAgo } from '../../../shared/pipes';
 export class RecipeBoard implements OnInit {
   private recipeService = inject(RecipeService);
   private route = inject(ActivatedRoute);
+
+  readonly ImageFallback = ImageFallback;
 
   recipes: Recipe[] = [];
   currentCategory: string | null = null;

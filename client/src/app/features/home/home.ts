@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { RecipeService } from '../../core/services';
 import { Recipe } from '../../models';
+import { ImageFallback } from '../../core/utils/index';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ import { Recipe } from '../../models';
 })
 export class Home implements OnInit {
   private recipeService = inject(RecipeService);
+
+  readonly ImageFallback = ImageFallback;
 
   latestRecipes: Recipe[] = [];
 

@@ -1,7 +1,8 @@
 <div class="wrapper style1">
   <div id="banner">
     <h2>
-      <strong>Full Recipe Treasury: A Journey Through Flavors</strong>
+      <strong>Full Recipe Treasury</strong>
+      <span class="subtitle">A Journey Through Flavors</span>
     </h2>
     <p class="inspiring-text">
       Explore our complete collection of authentic dishes and hidden culinary gems.<br />
@@ -20,7 +21,11 @@
           <div class="col-4 col-12-medium">
             <section class="recipe-card">
               <a [routerLink]="['/recipes', recipe._id]" class="image featured">
-                <img [src]="recipe.imageUrl" [alt]="recipe.name" />
+                <img
+                  [src]="recipe.imageUrl"
+                  [alt]="recipe.name"
+                  (error)="ImageFallback.handleImageError($event, recipe.category)"
+                />
               </a>
 
               <h3>

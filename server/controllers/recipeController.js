@@ -49,6 +49,7 @@ function getRecipeById(req, res, next) {
 
     recipeModel
         .findById(recipeId)
+        .populate('userId')
         .populate({
             path: 'comments',
             populate: { path: 'userId' },
@@ -71,7 +72,8 @@ function createRecipe(req, res, next) {
         .then(recipe => {
             return userModel
                 .updateOne({ _id: userId }, { $push: { recipes: recipe._id } })
-                .then(() => res.status(200).json(recipe));
+                .then(() => recipeModel.findById(recipe._id).populate('userId'))
+                .then(populatedRecipe => res.status(200).json(populatedRecipe));
         })
         .catch(next);
 }
@@ -87,6 +89,11 @@ function editRecipe(req, res, next) {
             { name, category, ingredients, instructions, imageUrl },
             { new: true, runValidators: true },
         )
+        .populate('userId')
+        .populate({
+            path: 'comments',
+            populate: { path: 'userId' },
+        })
         .then(updatedRecipe => {
             if (updatedRecipe) {
                 res.status(200).json(updatedRecipe);
@@ -126,36 +133,32 @@ function deleteRecipe(req, res, next) {
         .catch(next);
 }
 
-function toggleFavorite(req, res, next) {
+async function toggleFavorite(req, res, next) {
     const { recipeId } = req.params;
-    const { _id: userId } = req.user;
+    const userId = req.user._id;
 
-    recipeModel
-        .findById(recipeId)
-        .then(recipe => {
-            if (!recipe) {
-                return res.status(404).json({ message: 'Recipe not found!' });
-            }
-            if (recipe.userId.toString() === userId.toString()) {
-                return res.status(403).json({ message: 'Not allowed!' });
-            }
+    try {
+        const recipe = await recipeModel.findById(recipeId);
+        if (!recipe)
+            return res.status(404).json({ message: 'Recipe not found' });
 
-            const alreadyFavorited = recipe.favorites.some(
-                id => id.toString() === userId.toString(),
-            );
-            const update = alreadyFavorited
-                ? { $pull: { favorites: userId } }
-                : { $addToSet: { favorites: userId } };
+        const isFavorited = recipe.favorites.includes(userId);
+        const update = isFavorited
+            ? { $pull: { favorites: userId } }
+            : { $addToSet: { favorites: userId } };
 
-            return recipeModel
-                .findByIdAndUpdate(recipeId, update, { new: true })
-                .populate({
-                    path: 'comments',
-                    populate: { path: 'userId' },
-                })
-                .then(updatedRecipe => res.status(200).json(updatedRecipe));
-        })
-        .catch(next);
+        const updatedRecipe = await recipeModel
+            .findByIdAndUpdate(recipeId, update, { new: true })
+            .populate('userId', 'username email')
+            .populate({
+                path: 'comments',
+                populate: { path: 'userId', select: 'username email' },
+            });
+
+        res.status(200).json(updatedRecipe);
+    } catch (err) {
+        next(err);
+    }
 }
 
 module.exports = {

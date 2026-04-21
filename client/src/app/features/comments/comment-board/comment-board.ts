@@ -55,16 +55,15 @@ export class CommentBoard implements OnInit {
     this.commentService.likeComment(this.recipeId, commentId).subscribe({
       next: (updatedComment: Comment) => {
         const index = this.comments.findIndex((c) => c._id === commentId);
+
         if (index !== -1) {
-          this.comments[index] = {
-            ...this.comments[index],
-            likes: updatedComment.likes,
-          };
+          this.comments[index] = updatedComment;
+
+          this.comments = [...this.comments];
         }
       },
-      error: (err: any) => {
-        console.error('Failed to like comment', err);
-        const msg = err.error?.message || 'Action failed';
+      error: (err) => {
+        const msg = err.error?.message || 'Failed to like comment';
         alert(msg);
       },
     });

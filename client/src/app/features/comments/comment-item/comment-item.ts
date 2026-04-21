@@ -25,6 +25,8 @@ export class CommentItem {
 
   get isOwner(): boolean {
     const currentUserId = this.authService.getCurrentUserId();
+    if (!this.comment || !currentUserId) return false;
+
     const userId =
       typeof this.comment.userId === 'object' ? this.comment.userId._id : this.comment.userId;
     return userId === currentUserId;
@@ -40,11 +42,20 @@ export class CommentItem {
   }
 
   get username(): string {
-    return typeof this.comment.userId === 'object' ? this.comment.userId.username : 'Unknown User';
+    if (typeof this.comment.userId === 'object' && this.comment.userId !== null) {
+      return this.comment.userId.username;
+    }
+    return 'Unknown User';
   }
 
   onLike() {
-    this.liked.emit(this.comment._id);
+    const commentId = typeof this.comment === 'object' ? this.comment._id : this.comment;
+
+    if (commentId) {
+      this.liked.emit(commentId);
+    } else {
+      console.error('ERROR: Missing comment ID!', this.comment);
+    }
   }
 
   deleteComment() {

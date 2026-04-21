@@ -4,7 +4,7 @@ import { RecipeService, AuthService } from '../../../core/services';
 import { Recipe } from '../../../models';
 import { DatePipe } from '@angular/common';
 import { CommentBoard } from '../../comments/comment-board/comment-board';
-import { ImageFallback } from '../../../core/utils';
+import { ImageFallback } from '../../../core/utils/index';
 
 @Component({
   selector: 'app-recipe-content',
@@ -32,6 +32,12 @@ export class RecipeContent implements OnInit {
 
     this.recipeService.getRecipeById(id).subscribe({
       next: (recipe) => {
+        if (recipe.comments) {
+          recipe.comments.sort(
+            (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          );
+        }
+
         this.recipe = recipe;
         const currentUserId = this.authService.getCurrentUserId();
         this.isOwner =
@@ -58,6 +64,12 @@ export class RecipeContent implements OnInit {
 
     this.recipeService.toggleFavorite(this.recipe._id).subscribe({
       next: (updatedRecipe) => {
+        if (updatedRecipe.comments) {
+          updatedRecipe.comments.sort(
+            (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          );
+        }
+
         this.recipe = updatedRecipe;
         const currentUserId = this.authService.getCurrentUserId();
         this.isFavorited = updatedRecipe.favorites.includes(currentUserId || '');

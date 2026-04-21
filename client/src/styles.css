@@ -289,7 +289,7 @@ img.is-default {
 .recipe-image:has(img.is-default)::after,
 .image.left:has(img.is-default)::after,
 .image.fit:has(img.is-default)::after {
-    content: "Recipe Illustration";
+    content: "Category Default View";
     position: absolute;
     bottom: 15px;
     right: 15px;

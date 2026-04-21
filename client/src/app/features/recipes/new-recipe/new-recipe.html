@@ -50,7 +50,7 @@
             placeholder="https://... or http://..."
             [(ngModel)]="formData.imageUrl"
             required
-            pattern="^(http:\/\/|https:\/\/|\/assets\/).*$"
+            pattern="^(https?:\/\/|\/).*$"
             #imageField="ngModel"
           />
           @if (imageField.touched && imageField.invalid) {

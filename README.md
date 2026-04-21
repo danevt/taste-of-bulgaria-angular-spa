@@ -44,10 +44,12 @@ Taste of Bulgaria is a recipe-sharing platform where users can explore authentic
 
 ## Project Structure
 
+```
 TASTE-OF-BULGARIA/
-├── server/ # Backend (Node.js + MongoDB)
-├── client/ # Frontend (Angular)
+├── server/           # Backend (Node.js + MongoDB)
+├── client/           # Frontend (Angular)
 └── README.md
+```
 
 ## Installation
 
@@ -410,21 +412,23 @@ Open `http://localhost:4200`
 
 ## Project Architecture
 
+```
 client/src/app/
 ├── core/
-│ ├── guards/ # Route protection
-│ ├── interceptors/ # HTTP interceptors
-│ └── services/ # Business logic
+│   ├── guards/           # Route protection
+│   ├── interceptors/     # HTTP interceptors
+│   └── services/         # Business logic
 ├── features/
-│ ├── auth/ # Login/Register
-│ ├── home/ # Landing page
-│ ├── recipes/ # Recipe CRUD
-│ ├── comments/ # Comment system
-│ └── profile/ # User profile
-├── models/ # TypeScript interfaces
+│   ├── auth/             # Login/Register
+│   ├── home/             # Landing page
+│   ├── recipes/          # Recipe CRUD
+│   ├── comments/         # Comment system
+│   └── profile/          # User profile
+├── models/               # TypeScript interfaces
 └── shared/
-├── components/ # Reusable UI
-└── pipes/ # Custom pipes
+    ├── components/       # Reusable UI
+    └── pipes/            # Custom pipes
+```
 
 ## Notes for Evaluation
 

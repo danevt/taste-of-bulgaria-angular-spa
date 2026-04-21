@@ -13,30 +13,27 @@ const seedData = async () => {
 
         console.log('Connected to MongoDB');
 
-        // Clear existing data
         await userModel.deleteMany({});
         await recipeModel.deleteMany({});
         console.log('Cleared existing data');
 
-        // Create test users with PLAIN passwords (userModel hashes them via pre-save hook)
         const user1 = await userModel.create({
             email: 'john@example.com',
             username: 'john_chef',
-            password: '12345', // ← plain text, pre-save hook хешира
+            password: '12345',
         });
 
         const user2 = await userModel.create({
             email: 'maria@example.com',
             username: 'maria_cook',
-            password: '12345', // ← plain text
+            password: '12345',
         });
 
         console.log('Created test users');
 
-        // Create test recipes (същото като преди)
         const recipe1 = await recipeModel.create({
             name: 'Shopska Salad',
-            category: 'Salads & Appetizers',
+            category: 'Salads',
             ingredients: [
                 '4 tomatoes, diced',
                 '2 cucumbers, diced',
@@ -58,6 +55,54 @@ const seedData = async () => {
         });
 
         const recipe2 = await recipeModel.create({
+            name: 'Tarator',
+            category: 'Salads',
+            ingredients: [
+                '500g yogurt',
+                '2 cucumbers, finely diced',
+                '2 cloves garlic, minced',
+                '3 tbsp dill, chopped',
+                '2 tbsp walnuts, crushed',
+                '2 tbsp sunflower oil',
+                'Salt',
+                'Cold water',
+            ],
+            instructions: [
+                'Mix yogurt with cold water to desired consistency',
+                'Add diced cucumbers and minced garlic',
+                'Stir in chopped dill and crushed walnuts',
+                'Add sunflower oil and salt to taste',
+                'Chill in refrigerator for at least 1 hour before serving',
+            ],
+            imageUrl: '/images/recipe-tarator.jpg',
+            userId: user2._id,
+        });
+
+        const recipe3 = await recipeModel.create({
+            name: 'Snezhanka Salad',
+            category: 'Salads',
+            ingredients: [
+                '500g strained yogurt',
+                '2 cucumbers, finely diced',
+                '2 cloves garlic, minced',
+                '3 tbsp fresh dill, chopped',
+                '2 tbsp walnuts, crushed',
+                '1 tbsp olive oil',
+                'Salt and pepper',
+            ],
+            instructions: [
+                'Strain yogurt through cheesecloth for 2-3 hours',
+                'Mix strained yogurt with minced garlic',
+                'Add finely diced cucumbers',
+                'Stir in chopped dill and crushed walnuts',
+                'Season with salt, pepper, and drizzle with olive oil',
+                'Chill before serving',
+            ],
+            imageUrl: '/images/recipe-snezhanka.jpg',
+            userId: user1._id,
+        });
+
+        const recipe4 = await recipeModel.create({
             name: 'Banitsa',
             category: 'Main Dishes',
             ingredients: [
@@ -80,7 +125,7 @@ const seedData = async () => {
             userId: user2._id,
         });
 
-        const recipe3 = await recipeModel.create({
+        const recipe5 = await recipeModel.create({
             name: 'Pork Kavarma',
             category: 'Main Dishes',
             ingredients: [
@@ -104,15 +149,139 @@ const seedData = async () => {
             userId: user1._id,
         });
 
-        // Update user recipes
+        const recipe6 = await recipeModel.create({
+            name: 'Moussaka',
+            category: 'Main Dishes',
+            ingredients: [
+                '1kg potatoes, sliced',
+                '500g ground meat (pork and beef mix)',
+                '1 onion, chopped',
+                '2 eggs',
+                '300ml yogurt',
+                '2 tbsp flour',
+                'Paprika, salt, pepper',
+                'Oil for frying',
+            ],
+            instructions: [
+                'Fry potato slices until golden',
+                'Cook ground meat with onion and spices',
+                'Layer potatoes and meat in a baking dish',
+                'Mix eggs, yogurt, and flour for topping',
+                'Pour mixture over layers',
+                'Bake at 180°C for 45 minutes until golden',
+            ],
+            imageUrl: '/images/recipe-moussaka.jpg',
+            userId: user2._id,
+        });
+
+        const recipe7 = await recipeModel.create({
+            name: 'Mekitsi',
+            category: 'Desserts',
+            ingredients: [
+                '500g flour',
+                '250ml yogurt',
+                '1 egg',
+                '1 tsp baking soda',
+                '1 tsp salt',
+                '1 tbsp sugar',
+                'Oil for frying',
+                'Powdered sugar or jam for serving',
+            ],
+            instructions: [
+                'Mix yogurt with baking soda and let it foam slightly',
+                'Add egg, salt, sugar, and mix well',
+                'Gradually add flour and knead into a soft dough',
+                'Let the dough rest for 20-30 minutes',
+                'Shape small pieces into flat rounds',
+                'Fry in hot oil until golden on both sides',
+                'Serve warm with powdered sugar or jam',
+            ],
+            imageUrl: '/images/recipe-mekitsi.jpg',
+            userId: user1._id,
+        });
+
+        const recipe8 = await recipeModel.create({
+            name: 'Baklava',
+            category: 'Desserts',
+            ingredients: [
+                '500g filo pastry',
+                '300g walnuts, crushed',
+                '200g butter, melted',
+                '1 cup sugar',
+                '1 cup water',
+                '1 tbsp lemon juice',
+                'Cinnamon',
+            ],
+            instructions: [
+                'Mix crushed walnuts with cinnamon and 2 tbsp sugar',
+                'Layer filo sheets in a pan, brushing each with melted butter',
+                'Add walnut mixture between layers',
+                'Cut into diamond shapes before baking',
+                'Bake at 180°C for 30-40 minutes until golden',
+                'Boil sugar, water, and lemon juice for syrup',
+                'Pour hot syrup over cooled baklava',
+            ],
+            imageUrl: '/images/recipe-baklava.jpg',
+            userId: user2._id,
+        });
+
+        const recipe9 = await recipeModel.create({
+            name: 'Garash Cake',
+            category: 'Desserts',
+            ingredients: [
+                '6 eggs',
+                '200g sugar',
+                '200g walnuts, ground',
+                '100g dark chocolate',
+                '100g butter',
+                '3 tbsp flour',
+                '300ml heavy cream',
+                '150g chocolate for ganache',
+            ],
+            instructions: [
+                'Beat eggs with sugar until fluffy',
+                'Melt chocolate with butter',
+                'Fold chocolate mixture into eggs',
+                'Add ground walnuts and flour',
+                'Bake at 180°C for 30-35 minutes',
+                'Cool and prepare chocolate ganache with cream',
+                'Cover cake with ganache and chill',
+            ],
+            imageUrl: '/images/recipe-garash.jpg',
+            userId: user1._id,
+        });
+
         await userModel.updateOne(
             { _id: user1._id },
-            { $push: { recipes: { $each: [recipe1._id, recipe3._id] } } },
+            {
+                $push: {
+                    recipes: {
+                        $each: [
+                            recipe1._id,
+                            recipe3._id,
+                            recipe5._id,
+                            recipe7._id,
+                            recipe9._id,
+                        ],
+                    },
+                },
+            },
         );
 
         await userModel.updateOne(
             { _id: user2._id },
-            { $push: { recipes: recipe2._id } },
+            {
+                $push: {
+                    recipes: {
+                        $each: [
+                            recipe2._id,
+                            recipe4._id,
+                            recipe6._id,
+                            recipe8._id,
+                        ],
+                    },
+                },
+            },
         );
 
         console.log('Created test recipes');
@@ -120,7 +289,7 @@ const seedData = async () => {
         console.log('Test Users:');
         console.log('  john@example.com / 12345');
         console.log('  maria@example.com / 12345');
-        console.log('\nRecipes created: 3');
+        console.log('\nRecipes created: 9');
 
         process.exit(0);
     } catch (err) {

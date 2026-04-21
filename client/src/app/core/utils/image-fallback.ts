@@ -5,7 +5,7 @@ export class ImageFallback {
     event.target.classList.add('is-default');
 
     const defaultImages: { [key: string]: string } = {
-      'Salads & Appetizers': '/assets/images/category-salads.jpg',
+      'Salads': '/assets/images/category-salads.jpg',
       'Main Dishes': '/assets/images/category-main.jpg',
       'Desserts': '/assets/images/category-desserts.jpg',
     };

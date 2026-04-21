@@ -30,12 +30,12 @@
               <section>
                 <a
                   [routerLink]="['/recipes']"
-                  [queryParams]="{ category: 'Salads & Appetizers' }"
+                  [queryParams]="{ category: 'Salads' }"
                   class="image featured"
                 >
                   <img src="/assets/images/category-salads.jpg" alt="salads" />
                 </a>
-                <h3 style="text-align: center; margin-top: 10px">~ Salads & Appetizers ~</h3>
+                <h3 style="text-align: center; margin-top: 10px">~ Salads ~</h3>
               </section>
             </div>
 
@@ -94,18 +94,24 @@
                     </a>
                     <div class="content">
                       <header>
-                        <span class="date">{{ recipe.createdAt | date: 'MMM dd' }}</span>
+                        <span class="date">{{ recipe.createdAt | timeAgo }}</span>
                         <h3>
-                          <a [routerLink]="['/recipes', recipe._id]">{{ recipe.name }}</a>
+                          <a [routerLink]="['/recipes', recipe._id]">{{
+                            recipe.name | sliceTitle: 30
+                          }}</a>
                         </h3>
                       </header>
-                      <p>{{ recipe.instructions[0] }}</p>
+
+                      <p style="margin-bottom: 5px">
+                        <span class="category-badge">{{ recipe.category }}</span>
+                        <span class="ingredients-count">
+                          | {{ recipe.ingredients.length }} ingredients</span
+                        >
+                      </p>
+
+                      <p>{{ recipe.instructions.join(' ') | sliceTitle: 120 }}</p>
                     </div>
                   </article>
-                } @empty {
-                  <p style="font-size: 1.3em; text-align: center; margin: 3em 0">
-                    No recipes yet. <a routerLink="/recipes/new">Be the first to add one!</a>
-                  </p>
                 }
               </section>
             </div>

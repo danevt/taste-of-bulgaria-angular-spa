@@ -11,7 +11,7 @@ const recipeSchema = new mongoose.Schema(
         },
         category: {
             type: String,
-            enum: ['Main Dishes', 'Salads & Appetizers', 'Desserts'],
+            enum: ['Main Dishes', 'Salads', 'Desserts'],
             required: true,
         },
         ingredients: [

@@ -2,7 +2,7 @@ import { Comment } from './comment.model';
 export interface Recipe {
   _id: string;
   name: string;
-  category: 'Main Dishes' | 'Salads & Appetizers' | 'Desserts';
+  category: 'Main Dishes' | 'Salads' | 'Desserts';
   ingredients: string[];
   instructions: string[];
   imageUrl: string;

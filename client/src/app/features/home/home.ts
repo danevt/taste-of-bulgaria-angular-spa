@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
 import { RecipeService } from '../../core/services';
 import { Recipe } from '../../models';
 import { ImageFallback } from '../../core/utils/index';
+import { SliceTitle, TimeAgo } from '../../shared/pipes';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, TimeAgo, SliceTitle],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
